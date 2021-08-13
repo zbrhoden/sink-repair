@@ -1,9 +1,9 @@
 import { getRequests } from "./dataAccess.js"
 
 
-const convertRequestToListElement = () => {
+const convertRequestToListElement = (request) => {
     return `<li>
-    Request #${requests.id}
+    Request #${request.id}
     </li>`
 }
 
@@ -14,7 +14,7 @@ export const Requests = () => {
     let html = `
         <ul>
             ${
-                requests.map(convertRequestToListElement())
+                requests.map(convertRequestToListElement)
             }
         </ul>
     `
