@@ -3,6 +3,22 @@ const applicationState = {
 }
 const API = "http://localhost:8088"
 
+mainContainer.addEventListener(
+    "stateChanged",
+    customEvent => {
+        render()
+    }
+)
+
+export const deleteRequest = (id) => {
+    return fetch(`${API}/requests/${id}`, { method: "DELETE" })
+        .then(
+            () => {
+                mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+            }
+        )
+}
+
 export const sendRequest = (userServiceRequest) => {
     const fetchOptions = {
         method: "POST",
